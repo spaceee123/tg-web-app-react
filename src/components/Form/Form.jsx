@@ -24,7 +24,7 @@ const Form = () => {
         return ()=>{
             tg.offEvent('mainButtonClicked',onSendData)
         }
-    },[])
+    },[onSendData])
 
     useEffect(()=>{
         tg.MainButton.setParams({
@@ -32,15 +32,22 @@ const Form = () => {
         })
     }, [])
 
+    useEffect(()=>{
+        if(!street || !country){
+            tg.MainButton.hide()
+        }else{
+            tg.MainButton.show()
+        }
+    },[country,street])
 
     const onChangeCountry = (e) => {
-        setCountry(e.target.valuee)
+        setCountry(e.target.value)
     }
     const onChangeStreet = (e) => {
-        setStreet(e.target.valuee)
+        setStreet(e.target.value)
     }
     const onChangeSubject = (e) => {
-        setSubject(e.target.valuee)
+        setSubject(e.target.value)
     }
 
     return (
