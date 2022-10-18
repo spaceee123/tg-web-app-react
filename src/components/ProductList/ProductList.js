@@ -7,15 +7,15 @@ const products =[
     {id:'1', title:'Джинсы',price:1222, description: 'Синего цвета, прямые'},
     {id:'2', title:'Куртка',price:519, description: 'Синего цвета, прямая'},
     {id:'3', title:'Джинсы 2',price:5115, description: 'чёрного, с дырками'},
-    {id:'4', title:'Спартифки:)',price:5112, description: 'Красного цвета, Абибас'},
+    {id:'4', title:'Спартифки:)',price:5112, description: 'белого цвета, zxc'},
     {id:'5', title:'Джинсы 4',price:13124, description: 'Синего цвета, прямые'},
     {id:'6', title:'Штаны ',price:100, description: 'Синего цвета, прямые'},
     {id:'7', title:'кофта',price:9441, description: 'Синего цвета, шёлк'},
     {id:'8', title:'сумка',price:5000, description: 'Синего цвета, кожа'},
 ]
-const getTotalPrice=(items)=>{
+const getTotalPrice=(items=[])=>{
     return items.reduce((acc,item)=>{
-        return acc+= item.price
+        return acc += item.price
     },0)
 }
 
@@ -32,12 +32,12 @@ const ProductList = () => {
         fetch('http://localhost:8000',{
             method: 'POST',
             headers:{
-                'Content-type':'application/json',
+                'Content-Type':'application/json',
             },
             body: JSON.stringify(data)
         })
-        tg.sendData(JSON.stringify(data))
-    }, [])
+
+    }, [addedItems])
 
 
     useEffect(()=>{
